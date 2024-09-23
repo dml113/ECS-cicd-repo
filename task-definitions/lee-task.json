@@ -1,0 +1,33 @@
+{
+    "executionRoleArn": "arn:aws:iam::211125622661:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "container",
+            "image": "<IMAGE_PLACEHOLDER>",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/lee-task",
+                    "awslogs-region": "ap-northeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "family": "lee-task",
+    "networkMode": "awsvpc",
+    "cpu": "1024",
+    "memory": "3072",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ]
+}
